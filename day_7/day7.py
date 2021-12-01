@@ -11,12 +11,20 @@ print(yourAnswer)
 
 end_of_game = False
 
+lives = len(chosen_word)
+
 while not end_of_game:
     guess = input("guess a letter: ").lower()
     for position in range(len(chosen_word)):
         letter = chosen_word[position]
         if letter == guess:
             yourAnswer[position] = letter
+    if guess not in chosen_word:
+        lives -= 1
+        print(lives)
+    if lives == 0:
+        end_of_game = True
+        print("you lose")
 
     print(yourAnswer)
     if "_" not in yourAnswer:
